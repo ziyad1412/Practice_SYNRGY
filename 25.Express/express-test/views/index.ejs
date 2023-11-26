@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>Ejs Input File</h1>
+    <div>
+      <img width="200" src="profiles/profile.png" alt="" />
+    </div>
+    <form><input type="file" name="picture" accept=image/png /></form>
+
+    <script>
+      const fileInput = document.querySelector("input[type=file]");
+
+      fileInput.addEventListener("input", () => {
+        const file = fileInput.files[0];
+        const formData = new FormData();
+
+        formData.append("profile", file);
+        upload(formData);
+        window.location.reload();
+      });
+
+      async function upload(formData) {
+        try {
+          const response = await fetch("http://localhost:8000/", {
+            method: "POST",
+            body: formData,
+          });
+          const result = await response.json();
+          console.log("Success:", result);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    </script>
+  </body>
+</html>

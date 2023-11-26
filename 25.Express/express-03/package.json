@@ -1,0 +1,13 @@
+{
+  "name": "@binar/chapter-05-topic-01-express-02",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^3.0.1"
+  }
+}
